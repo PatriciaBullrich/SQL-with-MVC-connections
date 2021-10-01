@@ -215,6 +215,17 @@ namespace ApiLoangrounds.Utils
                 currentReader = null;
             }
         }
+          public static T readerToObject<T> (SqlDataReader lector, string key)
+        {
+            try
+            {
+                return lector[key] == DBNull.Value ? default(T) : (T)Convert.ChangeType(lector[key], typeof(T));
+
+            }
+            catch { throw; }            
+          
+        }
+      
 
     }
 }
